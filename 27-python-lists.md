@@ -216,8 +216,8 @@ list_name.extend(another_list)
 
 `fruits.extend(more_fruits)` adds all elements of `more_fruits` to `fruits`.
 
-![alt text](<Screenshot (547)(1).png>)
 
+![alt text](<Screenshot (547)(1).png>)
 
 ---
 
