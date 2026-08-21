@@ -372,7 +372,7 @@ list_name.clear()
 
 `fruits.clear()` removes all elements from the list.
 
-![alt text](<Screenshot (552)(1).png>)
+![alt text](<Screenshot (552)(1)(1)-1.png>)
 
 
 ---
