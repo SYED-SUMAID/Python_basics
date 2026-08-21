@@ -1,4 +1,4 @@
-# 27 - Python Lists
+# Python Lists
 
 ## Practical: Lists and List Functions in Python
 
