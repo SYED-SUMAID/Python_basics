@@ -14,9 +14,9 @@ class Employee:
        new_name = f"{parts} {split_name[1]}"
        self.name = new_name
 
-e = Employee("Bilal Altaf",30000000)
+e = Employee("Jhon Doe",30000000)
 print(e.first_name)
-e.first_name = "Sumaid"
+e.first_name = "Sum"
 print(e.name)
 
 

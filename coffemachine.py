@@ -18,6 +18,7 @@ MENU = {
     },"price" : 220
 },
 "cappuccino" :{
+    "ingredients" :{
     "coffee" : 50,
     "water" : 80,
     "milk" : 130,
@@ -26,6 +27,7 @@ MENU = {
    
    },"price" : 300      
 
+},
 }
 profit = 0
 resources = {
@@ -49,14 +51,14 @@ def make_money():
  return money
 
 def is_transaction_successful(money_recieved,drink_cost):
- if money_recieved > drink_cost:
+ if money_recieved >= drink_cost:
   change = round(money_recieved - drink_cost,2)
   print(f"here is your {change} change")
   global profit
   profit += drink_cost
   return True
  else:
-  ("sorry not enough money.money refunded")
+  print("sorry not enough money.money refunded")
   return False
    
   
@@ -67,35 +69,48 @@ def make_coffee(drink_name,ingredients):
 
 is_on = True
 while is_on:
- choice = input("Enter what do you want(espresso/latte/cappuccino) : ")
- if choice == "off":
-  is_on = False
+    choice = input("Enter what do you want(espresso/latte/cappuccino) : ")
+    if choice == "off":
+     is_on = False
 
- elif choice == "report":
-  print(f"water : {resources['water']}ml") 
-  print(f"coffee : {resources['coffee']}gm") 
-  print(f"milk : {resources['milk']}ml") 
-  print(f"sugar : {resources['sugar']}gm") 
-  print(f"cream : {resources['cream']}gm") 
-  print(f"money : {profit}")
+    elif choice == "report":
+      print(f"water : {resources['water']}ml") 
+      print(f"coffee : {resources['coffee']}gm") 
+      print(f"milk : {resources['milk']}ml") 
+      print(f"sugar : {resources['sugar']}gm") 
+      print(f"cream : {resources['cream']}gm") 
+      print(f"money : {profit}")
 
- else:
-  drink = MENU.get(choice)
+ 
 
-  sugar_free = input("do you want it with sugar(yes/no) : ").lower()
+    else:
+      drink = MENU.get(choice)
 
 
-  ingredients = (drink["ingredients"]).copy()
+    if drink is None:
+      print ("invalid choice")
+      continue
 
-  if sugar_free == "yes":
-   if "sugar" in ingredients:
-    ingredients["sugar"] = 0
-    print("preparing your sugar-free drink")
+    sugar_free = input("do you want it with sugar? (yes/no) : ").lower()
 
-    if is_resource_sufficient(drink["ingredients"]):
+
+    ingredients = (drink["ingredients"]).copy()
+
+
+    if sugar_free == "yes":
+     if "sugar" in ingredients:
+      ingredients["sugar"] = 0
+      print("preparing your sugar-free drink")
+
+
+    elif sugar_free !="no":
+      print("preparing your drink with sugar")
+      continue
+
+    if is_resource_sufficient(ingredients):
        payment = make_money()
        if is_transaction_successful(payment,drink["price"]):
-         make_coffee(choice,drink["ingredients"])
+        make_coffee(choice,ingredients)
 
 
 
